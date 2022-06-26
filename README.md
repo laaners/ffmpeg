@@ -1,6 +1,6 @@
 # ffmpeg and yt-dlp utils batches
 
-Batches I made implementing custom ffmpeg and yt-dlp
+Batches I made implementing custom ffmpeg and yt-dlp commands
 
 Quite the spaghetti code, mostly for personal archive
 
