@@ -35,7 +35,7 @@ C:\folder>splitter -p 2 "video.mp4" splitter.txt veryfast
 ```
 ### silencer
 ```bash
-# Removes all video parts with audio below a certain threshold, needs .jar files support, silencer -h for more info
+# Removes all video parts with audio below a certain threshold, needs .jar files support and node.js, silencer -h for more info
 C:\folder>silencer -h
 
 # Removes all moments with audio below -10dB and duration of at least 2 seconds, traslating the removing startpoint 0.5 seconds before the original startpoint the removing endpoint 0.7 seconds after the original endpoint
