@@ -7,8 +7,8 @@ set start=0
 set end=0
 set result=0
 
-set startTs=0
-set endTs=0
+set startTs=00:00:00
+set endTs=00:00:00
 
 for /F "tokens=1,2 delims=-" %%a in ("%2") do (
     set threS=%%a
