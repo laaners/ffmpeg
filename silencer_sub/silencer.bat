@@ -1,68 +1,31 @@
-DEL dacanc.txt
-ffmpeg -i %1 2>&1 | findstr Duration >> dacanc.txt
-for /f "tokens=*" %%a in (dacanc.txt) do set var=%%a
-echo %4 > dacanc.txt
-echo %var% >> dacanc.txt
-mkdir UNION_FOLDER
-ffmpeg -hide_banner -i %1 -vn -acodec copy a.m4a
-ffmpeg -hide_banner -i a.m4a -af silencedetect=noise=%2:d=%3 -f null - -preset ultrafast > ris.txt 2>&1
-node C:\ffmpeg\silencer_sub\Silencer2Splitter.js > splitter.txt
-move "%1" UNION_FOLDER
-move "splitter.txt" UNION_FOLDER
-cd UNION_FOLDER
-call splitter -p 5 "%1" "splitter.txt" ultrafast
-pause
-move "%1" ..
-move "splitter.txt" ..
+::silencer "video.mp4" -10dB 2 0.5-0.5
+DEL silencer_splitter.txt
+DEL silencer_map.txt
+mkdir SILENCER_UNION_FOLDER
+ffmpeg -hide_banner -i %1 -vn -acodec copy "%~n1.m4a"
+ffmpeg -hide_banner -i "%~n1.m4a" -af silencedetect=noise=%2:d=%3,ametadata=print:file=silencer_logs.txt -f null - -preset ultrafast
+call %~dp0getTimestamps.bat %1 %4
+move "silencer_splitter.txt" SILENCER_UNION_FOLDER
+move %1 SILENCER_UNION_FOLDER
+cd SILENCER_UNION_FOLDER
+call splitter -p 0 %1 "silencer_splitter.txt" ultrafast
+move "silencer_splitter.txt" ..
+move %1 ..
 cd ..
 set ext=%~x1
-echo joiner UNION_FOLDER %ext:~1%
-call joiner UNION_FOLDER %ext:~1%
-DEL ris.txt
-DEL splitter.txt
-DEL a.m4a
-DEL dacanc.txt
+echo joiner SILENCER_UNION_FOLDER %ext:~1%
+call joiner SILENCER_UNION_FOLDER %ext:~1%
+DEL silencer_logs.txt
+DEL "%~n1.m4a"
 
 @echo off
 set /p a="Vuoi la mappa?[y/n]: "
 if %a% EQU n (
 	goto E
 )
-@echo on
-cd UNION_FOLDER
-for %%f in (*%~x1) do ffmpeg -i "%%f" 2>&1 | findstr "Duration from" >> "..\mappa.txt"
-cd ..
-java -jar C:\ffmpeg\silencer_sub\Map.jar
-DEL mappa.txt
-:E
-Rmdir /S UNION_FOLDER
 
-::ffmpeg -i %1 2>&1 | findstr Duration >> dacanc.txt
-::for /f "tokens=*" %%a in (dacanc.txt) do set var=%%a
-::type dacanc.txt
-::DEL dacanc.txt
-::
-::mkdir UNION_FOLDER
-::ffmpeg -hide_banner -i %1 -vn -acodec copy a.m4a
-::ffmpeg -hide_banner -i a.m4a -af silencedetect=noise=%2:d=%3 -f null - -preset ultrafast > ris.txt 2>&1
-::java -jar C:\ffmpeg\silencer_sub\Silencer2Splitter.jar %1,%4,%cd%,ultrafast,rrapido,"%var%"
-::DEL ris.txt
-::DEL splitter.txt
-::DEL a.m4a
-::cd UNION_FOLDER
-::for %%f in (*%~x1) do echo file '%%~ff' >> join.txt
-::ffmpeg -hide_banner -f concat -safe 0 -i join.txt -c copy united.mp4
-::move united.mp4 ..
-::
-::@echo off
-::set /p a="Vuoi la mappa?[y/n]: "
-::if %a% EQU n (
-::	goto E
-::)
-::@echo on
-::for %%f in (*%~x1) do ffmpeg -i "%%f" 2>&1 | findstr "Duration from" >> "..\mappa.txt"
-:::E
-::cd ..
-::java -jar C:\ffmpeg\silencer_sub\Map.jar
-::DEL mappa.txt
-::Rmdir /S UNION_FOLDER
+call %~dp0getMap.bat
+
+:E
+echo Removing:
+Rmdir /S SILENCER_UNION_FOLDER
