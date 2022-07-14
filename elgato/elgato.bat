@@ -7,7 +7,7 @@ if %1 == -r (
 	ffmpeg -hide_banner -ss 0 -to 18000 -f dshow -video_size 1920x1080 -rtbufsize 2147480000 -threads 16 -framerate 60 -i video="Game Capture HD60 S":audio="Game Capture HD60 S Audio" -r 60 -preset superfast -crf 24 soutput.mp4
 	goto E
 )
-if %1 == -ru (	
+if %1 == -ru (
 	ffmpeg -hide_banner -ss 0 -to 18000 -f dshow -video_size 1920x1080 -rtbufsize 2147480000 -threads 16 -framerate 60 -i video="Game Capture HD60 S":audio="Game Capture HD60 S Audio" -r 60 -preset ultrafast -crf 24 uoutput.mp4
 	goto E
 )

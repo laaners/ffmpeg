@@ -34,6 +34,7 @@ C:\folder>splitter -r 0 "video.mp4" splitter.txt
 C:\folder>splitter -p 2 "video.mp4" splitter.txt veryfast
 ```
 ### silencer
+Requires the beforementioned splitter and joiner
 ```bash
 # Removes all video parts with audio below a certain threshold, needs splitter and joiner in path, silencer -h for more info
 C:\folder>silencer -h
