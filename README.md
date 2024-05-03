@@ -25,7 +25,7 @@ Scaricare [qui](https://github.com/yt-dlp/yt-dlp?tab=readme-ov-file#release-file
 
 Spostare il file ```yt-dlp.exe``` in ```ffolder```
 
-### ytsplitter
+### clips_downloader
 
 Scaricare [qui](https://github.com/laaners/ffmpeg-yt-dlp-batch-utils/blob/master/ytsplitter/ytsplitter.bat) ```ytsplitter.bat```
 
