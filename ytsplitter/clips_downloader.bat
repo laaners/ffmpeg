@@ -39,5 +39,5 @@ for /F "tokens=1-2 delims=-" %%a in (splitter.txt) do (
 )
 DEL tmp_dsa.txt
 
-echo Ho finito! Invio per chiudermi
+echo Ho finito, invio per chiudermi
 pause
