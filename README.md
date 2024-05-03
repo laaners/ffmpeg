@@ -1,11 +1,42 @@
-# ffmpeg and yt-dlp utils batches
+# Setup
 
-Batches I made implementing custom ffmpeg and yt-dlp commands
+Per prima cosa creare una cartella dove dentro terremmo i programmi che scaricheremo, lo script per tagliare i clip e i clip che verranno tagliati verranno salvati qui. Mi riferirò a questa cartella come ```ffolder``` in seguito
 
-Quite the spaghetti code, mostly for personal archive
+## Cose da scaricare
 
-Prerequisities: [ffmpeg ](https://github.com/FFmpeg/FFmpeg) and [yt-dlp](https://github.com/yt-dlp/yt-dlp), preferably added to path
+### ffmpeg
 
+Scaricare [qui](https://www.gyan.dev/ffmpeg/builds/) ```ffmpeg-git-essentials.7z```
+
+<img src="zz_images/0_ffmpeg.png" alt="drawing" width="800"/>
+
+Decomprimere il file scaricato, andare nella cartella ```bin``` e spostare il file ```ffmpeg.exe``` in ```ffolder```
+
+<img src="image.png" alt="drawing" width="800"/>
+
+Tutto il resto si può cestinare
+
+<img src="image-1.png" alt="drawing" width="200"/>
+
+### yt-dlp
+Scaricare [qui](https://github.com/yt-dlp/yt-dlp?tab=readme-ov-file#release-files) ```yt-dlp.exe```
+
+<img src="image-2.png" alt="drawing" width="800"/>
+
+Spostare il file ```yt-dlp.exe``` in ```ffolder```
+
+### ytsplitter
+
+Scaricare [qui](https://github.com/laaners/ffmpeg-yt-dlp-batch-utils/blob/master/ytsplitter/ytsplitter.bat) ```ytsplitter.bat```
+
+<img src="image-3.png" alt="drawing" width="800"/>
+
+Spostare il file ```ytsplitter.bat``` in ```ffolder```
+
+# Clippare
+
+```
+```
 ## Batches:
 ### frames
 ```bash
