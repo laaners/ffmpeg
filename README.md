@@ -245,11 +245,11 @@ Formato del video: Source
 Le clip generate sono file ```.mp4``` nominati secondo il timestamp iniziale, dai timestamp precedenti abbiamo per esempio:
 
 ```
-122-132          -> 122.mp4
-0122-0:02:12     -> 0122.mp4
-2:02-132         -> 2_02.mp4
-0:02:02-0:02:12  -> 0_02_02.mp4
-00:02:02-132     -> 00_02_02.mp4
+122-132          ->  122.mp4
+0122-0:02:12     ->  0122.mp4
+2:02-132         ->  2_02.mp4
+0:02:02-0:02:12  ->  0_02_02.mp4
+00:02:02-132     ->  00_02_02.mp4
 ```
 
 <img src="image-5.png" alt="drawing" width="800"/>
